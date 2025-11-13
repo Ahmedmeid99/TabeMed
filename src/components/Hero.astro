@@ -1,0 +1,277 @@
+---
+const slides = [
+    {
+        img: "/images/01.jpg",
+        title: "Welcome to Our Company",
+        subtitle: "We build amazing solutions for your health needs.",
+        cta: "Learn More",
+        link: "#services",
+    },
+    {
+        img: "/images/02.jpg",
+        title: "Medical Solutions",
+        subtitle: "Professional care for every patient.",
+        cta: "Our Doctors",
+        link: "#doctors",
+    },
+    {
+        img: "/images/03.jpg",
+        title: "Healthcare You Can Trust",
+        subtitle: "Experience quality for over 10 years.",
+        cta: "Contact Us",
+        link: "#contact",
+    },
+];
+---
+
+<style>
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 90vh;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        opacity: 0;
+        transform: translateX(100%);
+        transition:
+            transform 1s ease,
+            opacity 1s ease;
+    }
+
+    .slide.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .slide.prev {
+        transform: translateX(-100%);
+    }
+
+    /* Overlay */
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+        z-index: 1;
+    }
+
+    .slide-content {
+        position: relative;
+        z-index: 2;
+        width: 85%;
+        margin: auto;
+        /* text-align: center; */
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    .slide-content h1 {
+        font-size: 4rem;
+        max-width: 600px;
+        margin-bottom: 10px;
+        animation: fadeIn 1s ease forwards;
+    }
+
+    .slide-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        animation: fadeIn 1.2s ease forwards;
+    }
+
+    .slide-content a {
+        padding: 15px 40px;
+        font-size: 1rem;
+        background: #85d9ee;
+        color: #000;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+        animation: fadeIn 1.5s ease forwards;
+    }
+
+    .slide-content a:hover {
+        background: #3ccbef;
+    }
+
+    /* Dots */
+    .dots {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        z-index: 5;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        background: #fff;
+        opacity: 0.6;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .dot.active {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    /* Arrows */
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        cursor: pointer;
+        z-index: 5;
+        font-size: 25px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .arrow:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .arrow.left {
+        left: 20px;
+    }
+    .arrow.right {
+        right: 20px;
+    }
+
+    @media (max-width: 900px) {
+        .slide-content h1 {
+            font-size: 3rem;
+        }
+        .slide-content p {
+            font-size: 1rem;
+        }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="slider">
+    {
+        slides.map((s, i) => (
+            <div
+                class={`slide ${i === 0 ? "active" : ""}`}
+                style={`background-image: url('${s.img}')`}
+            >
+                <div class="overlay" />
+                <div class="slide-content">
+                    <h1>{s.title}</h1>
+                    <p>{s.subtitle}</p>
+                    <a href={s.link}>{s.cta}</a>
+                </div>
+            </div>
+        ))
+    }
+
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+
+    <div class="dots">
+        {
+            slides.map((_, i) => (
+                <div class={`dot ${i === 0 ? "active" : ""}`} data-index={i} />
+            ))
+        }
+    </div>
+</div>
+
+<script is:inline>
+    const slideEls = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+    const arrowLeft = document.querySelector(".arrow.left");
+    const arrowRight = document.querySelector(".arrow.right");
+    let index = 0;
+
+    function updateSlides(newIndex) {
+        slideEls.forEach((s, i) => {
+            s.classList.remove("active", "prev", "next");
+            if (i === newIndex) s.classList.add("active");
+            else if (i === (newIndex - 1 + slideEls.length) % slideEls.length)
+                s.classList.add("prev");
+            else s.classList.add("next");
+        });
+
+        dots.forEach((d) => d.classList.remove("active"));
+        dots[newIndex].classList.add("active");
+
+        index = newIndex;
+    }
+
+    function nextSlide() {
+        updateSlides((index + 1) % slideEls.length);
+    }
+    function prevSlide() {
+        updateSlides((index - 1 + slideEls.length) % slideEls.length);
+    }
+
+    dots.forEach((dot) =>
+        dot.addEventListener("click", () =>
+            updateSlides(parseInt(dot.dataset.index)),
+        ),
+    );
+
+    arrowRight.addEventListener("click", nextSlide);
+    arrowLeft.addEventListener("click", prevSlide);
+
+    // setInterval(nextSlide, 7000);
+</script>
+
+<style>
+    .slide.prev {
+        transform: translateX(-100%);
+    }
+    .slide.active {
+        transform: translateX(0);
+    }
+    .slide.next {
+        transform: translateX(100%);
+    }
+    .slide {
+        transition:
+            transform 1s ease,
+            opacity 1s ease;
+        opacity: 1;
+    }
+</style>
