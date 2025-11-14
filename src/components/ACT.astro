@@ -1,0 +1,79 @@
+---
+import Section from "../ui/Section.astro";
+---
+
+<style>
+    .act {
+        width: 100%;
+        height: 250px;
+        background-color: var(--main, #80d1ea);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .act h2 {
+        margin: 0;
+        font-size: 2rem;
+    }
+    .act p {
+        font-size: 15px;
+        max-width: 550px;
+        margin: auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        color: #fff;
+        margin: 0.5rem 0 0 0;
+        text-align: center;
+        line-height: 1.5;
+    }
+    .flex {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .flex button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+            background-color 0.3s,
+            color 0.3s;
+    }
+    .flex .btn-contact {
+        background-color: #fff;
+        color: var(--main, #80d1ea);
+    }
+    .flex .btn-contact:hover {
+        background-color: var(--main-hover);
+        color: #fff;
+        /* border: 1px solid #fff; */
+    }
+    .flex .btn-more {
+        background-color: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    .flex .btn-more:hover {
+        background-color: var(--main-hover);
+        /* color: var(--main, #80d1ea); */
+        /* border: 1px solid #fff; */
+    }
+</style>
+<Section>
+    <div class="act">
+        <h2>ACT Component</h2>
+        <p>
+            This is the ACT component content This is the ACT component content
+            This is the ACT component content.
+        </p>
+        <div class="flex">
+            <button class="btn-contact">Contact Us</button>
+            <button class="btn-more">Learn More</button>
+        </div>
+    </div>
+</Section>

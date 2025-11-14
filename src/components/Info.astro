@@ -1,0 +1,56 @@
+---
+import Card from "../ui/cards/Card.astro";
+import Section from "../ui/Section.astro";
+---
+
+<style>
+    .info {
+        background: #f9f9f9;
+        padding: 4rem 2rem;
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .grid-3 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 600px) {
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<Section
+    title="Why Choose TabeMed"
+    subTitle="Discover the benefits of using TabeMed for your medical appointment bookings."
+>
+    <div class="grid-3">
+        <Card
+            iconClass="fas fa-lightbulb"
+            title="Easy to Use"
+            description="Our platform is designed with user-friendliness in mind, making it simple for anyone to book appointments."
+        />
+
+        <Card
+            iconClass="fas fa-clock"
+            title="24/7 Availability"
+            description="Book appointments anytime, anywhere, without the need to call during office hours."
+        />
+
+        <Card
+            iconClass="fas fa-network-wired"
+            title="Wide Network"
+            description="Access a broad network of healthcare providers to find the right fit for your needs."
+        />
+    </div>
+</Section>

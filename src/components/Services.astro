@@ -1,0 +1,57 @@
+---
+import Card from "../ui/cards/Card.astro";
+import ServiceCard from "../ui/cards/ServiceCard.astro";
+import Section from "../ui/Section.astro";
+---
+
+<style>
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .grid-3 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<Section
+    title="Our Services"
+    subTitle="Discover the benefits of using TabeMed for your medical appointment bookings."
+>
+    <div class="grid-3">
+        <ServiceCard iconClass="fas fa-lightbulb">
+            <h3>Easy to Use</h3>
+            <p>
+                Our platform is designed with user-friendliness in mind, making
+                it simple for anyone to book appointments.
+            </p>
+        </ServiceCard>
+        <ServiceCard iconClass="fas fa-clock">
+            <h3>24/7 Availability</h3>
+            <p>
+                Book appointments anytime, anywhere, without the need to call
+                during office hours.
+            </p>
+        </ServiceCard>
+        <ServiceCard iconClass="fas fa-network-wired">
+            <h3>Wide Network</h3>
+            <p>
+                Access a broad network of healthcare providers to find the right
+                fit for your needs.
+            </p>
+        </ServiceCard>
+    </div>
+</Section>

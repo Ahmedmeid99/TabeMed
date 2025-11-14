@@ -1,0 +1,67 @@
+---
+const { title, subTitle } = Astro.props;
+---
+
+<style>
+    .section {
+        margin: 90px auto;
+        width: 90%;
+    }
+
+    .section-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .section-subtitle {
+        font-size: 15px;
+        color: var(--text-light);
+        margin-bottom: 60px;
+        text-align: center;
+    }
+
+    .section-line {
+        width: 120px;
+        height: 4px;
+        background: var(--main, #80d1ea);
+        margin: 0 auto 1rem auto;
+        border-radius: 2px;
+        position: relative;
+    }
+    .section-line::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 15px;
+        border-radius: 100px;
+        height: 15px;
+        border: 2px solid var(--main);
+        background: var(--accent);
+    }
+    .section-line::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 7px;
+        height: 7px;
+        background: var(--white);
+        border-radius: 100px;
+        z-index: 2;
+    }
+</style>
+
+<section class="section">
+    {title && <h3 class="section-title">{title}</h3>}
+    <!-- icon -->
+    {title && <div class="section-line" />}
+
+    {subTitle && <p class="section-subtitle">{subTitle}</p>}
+
+    <slot />
+</section>

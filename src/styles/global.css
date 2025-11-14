@@ -1,0 +1,51 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+
+:root {
+    --main: #80d1ea;
+    --main-hover: #3ccbef;
+    --main-bg: #f9f9f9;
+    --accent: #f4e3c3;
+    --accent-hover: #f5ddaf;
+    --text: #102a43;
+    --text-light: #888;
+    --white: #ffffff;
+    --nav-height: 90px;
+    --card-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    /* font-family: 'Nunito Sans', sans-serif; */
+
+    margin: 0;
+    color: var(--text);
+    background-color: var(--main-bg);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
+
+/* small styling for demo page */
+main {
+    overflow-x: hidden;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    letter-spacing: .5px;
+}
+
+.hero {
+    padding: 2rem;
+    background: linear-gradient(180deg, var(--accent), #fff9ee);
+    border-radius: 12px;
+}

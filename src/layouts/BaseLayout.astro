@@ -1,26 +1,56 @@
 ---
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+import Navbar from "./Navbar.astro";
+import Footer from "./Footer.astro";
+import ScrollToTop from "../lib/ScrollToTop .astro";
 ---
 
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Tabemed — Medical Services & Healthcare Solutions</title>
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="shortcut icon"
+            href="images/favicon.ico"
+            type="image/x-icon"
+        />
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <title>Tabemed</title>
+
+        <meta
+            name="description"
+            content="Tabemed provides professional medical services, doctors appointments, diagnostics, and healthcare solutions with modern and trusted technology."
+        />
+        <meta
+            name="keywords"
+            content="medical, healthcare, clinic, doctors, hospital, diagnostics, medical services"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://your-domain.com/" />
     </head>
+
     <body>
         <Navbar />
 
-        <main>
+        <main class="main">
             <slot />
-            <!-- هنا يتم وضع محتوى الصفحة -->
         </main>
+        <ScrollToTop />
 
         <Footer />
+        <script>
+            // Scroll to top on arrow click
+            const arrowTop = document.querySelector(".arrow.top");
+            arrowTop?.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        </script>
     </body>
 </html>

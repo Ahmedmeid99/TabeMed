@@ -1,0 +1,230 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../public/images/footer-logo.png";
+---
+
+<style>
+    footer {
+        background: var(--main);
+        color: #fff;
+        padding: 2rem;
+        font-family: inherit;
+    }
+    .logo {
+        padding: 0;
+    }
+
+    /* Grid Layout */
+    .footer-container {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2.5rem;
+    }
+
+    /* Column Titles */
+    .footer-col h4 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        position: relative;
+    }
+
+    /* Small underline bar */
+    .section-line {
+        width: 60px;
+        height: 3px;
+        background: var(--text, #80d1ea);
+        border-radius: 2px;
+        position: relative;
+    }
+    .section-line::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 100px;
+        border: 2px solid var(--text);
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+    }
+    .section-line::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 3px;
+        background: var(--text);
+        border-radius: 2px;
+    }
+
+    /* Links */
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin: 0.6rem 0;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .footer-col ul i {
+        color: var(--text);
+        font-size: 8px;
+        padding-right: 7px;
+    }
+
+    .footer-col ul li a {
+        color: var(--text);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 1rem;
+        transition: 0.5s;
+    }
+
+    .footer-col ul li a:hover {
+        /* color: #fff; */
+        margin-left: 7px;
+    }
+
+    /* Social Icons */
+    .social-icons {
+        margin-top: 1rem;
+    }
+    .social-icons a {
+        display: inline-block;
+        margin-right: 12px;
+        font-size: 1.4rem;
+        color: var(--text);
+        transition:
+            color 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        color: var(--accent, #00c2ff);
+        transform: scale(1.15);
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #1e3a5f;
+        font-size: 0.95rem;
+        color: var(--text);
+    }
+</style>
+
+<footer>
+    <div class="logo">
+        <Image src={logo} alt="Company Logo" height={100} />
+        <!-- <h2>Tabemed</h2> -->
+        <!-- <p>Your trusted partner in healthcare appointment booking.</p> -->
+    </div>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="section-line"></div>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Column 1 -->
+        <div class="footer-col">
+            <h4>Company</h4>
+            <div class="section-line"></div>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >About Us</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Why Tabemed</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Our Services</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Careers</a
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+            <h4>Support</h4>
+            <div class="section-line"></div>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Help Center</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Documentation</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Report a Problem</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#">FAQs</a
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <div class="section-line"></div>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#">Blog</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Contact</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Pricing</a
+                    >
+                </li>
+                <li>
+                    <i class="fa-solid fa-chevron-right"></i><a href="#"
+                        >Terms & Conditions</a
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">&copy; 2025 Tabemed. All rights reserved.</div>
+</footer>

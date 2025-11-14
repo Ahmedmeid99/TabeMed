@@ -1,0 +1,129 @@
+---
+import Section from "../ui/Section.astro";
+
+/* No props needed, pure static section — you can convert to component later */
+---
+
+<style>
+    .features-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .box {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 5%);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 12px rgba(0, 0, 0, 5%);
+    }
+
+    /* Hover background overlay */
+    .box::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0%;
+        background: var(--main, #0088a9);
+        z-index: -1;
+        transition: 0.4s;
+    }
+
+    /* .box:hover::after {
+        height: 100%;
+    } */
+
+    .box-icon {
+        font-size: 3rem;
+        color: var(--main, #0088a9);
+        margin-bottom: 0.5rem;
+        transition:
+            color 0.3s,
+            transform 0.3s;
+    }
+
+    /* .box:hover .box-icon {
+        color: #fff;
+        transform: scale(1.2);
+    } */
+
+    .num {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #105975;
+        margin-bottom: 0.3rem;
+    }
+
+    /* .box:hover .num {
+        color: #fff;
+    } */
+
+    .slug {
+        font-size: 1.1rem;
+        color: #555;
+        transition: color 0.3s;
+    }
+
+    /* .box:hover .slug {
+        color: #f1f1f1;
+    } */
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .features-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .features-container {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<Section>
+    <div class="features-container">
+        <div class="box">
+            <div class="box-icon"><i class="fa-solid fa-user-doctor"></i></div>
+            <div class="num">150+</div>
+            <div class="slug">Doctors Available</div>
+        </div>
+
+        <div class="box">
+            <div class="box-icon"><i class="fa-solid fa-hospital"></i></div>
+            <div class="num">30+</div>
+            <div class="slug">Clinics & Centers</div>
+        </div>
+
+        <div class="box">
+            <div class="box-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <div class="num">10K+</div>
+            <div class="slug">Appointments Booked</div>
+        </div>
+
+        <div class="box">
+            <div class="box-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="num">8K+</div>
+            <div class="slug">Happy Patients</div>
+        </div>
+    </div>
+</Section>

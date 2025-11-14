@@ -9,7 +9,7 @@ const slides = [
     },
     {
         img: "/images/02.jpg",
-        title: "Medical Solutions",
+        title: "Medical Solutions Can Trust",
         subtitle: "Professional care for every patient.",
         cta: "Our Doctors",
         link: "#doctors",
@@ -46,15 +46,24 @@ const slides = [
         transition:
             transform 1s ease,
             opacity 1s ease;
+        pointer-events: none;
     }
 
     .slide.active {
         opacity: 1;
         transform: translateX(0);
+        pointer-events: auto;
+        z-index: 2;
     }
 
     .slide.prev {
         transform: translateX(-100%);
+        z-index: 1;
+    }
+
+    .slide.next {
+        transform: translateX(100%);
+        z-index: 1;
     }
 
     /* Overlay */
@@ -70,7 +79,6 @@ const slides = [
         z-index: 2;
         width: 85%;
         margin: auto;
-        /* text-align: center; */
         animation: fadeInUp 1s ease forwards;
     }
 
@@ -82,14 +90,15 @@ const slides = [
     }
 
     .slide-content p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
+        font-size: 16px;
+        margin-bottom: 40px;
+        letter-spacing: 0.7px;
         animation: fadeIn 1.2s ease forwards;
     }
 
     .slide-content a {
-        padding: 15px 40px;
-        font-size: 1rem;
+        padding: 20px 50px;
+        font-size: 15px;
         background: #85d9ee;
         color: #000;
         border-radius: 6px;
@@ -97,10 +106,22 @@ const slides = [
         font-weight: 600;
         transition: background 0.3s;
         animation: fadeIn 1.5s ease forwards;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        width: fit-content;
     }
-
+    .slide-content i {
+        font-size: 12px;
+        margin-left: 8px;
+        transition: 0.5s;
+    }
     .slide-content a:hover {
         background: #3ccbef;
+    }
+
+    .slide-content a:hover i {
+        transform: translateX(3px);
     }
 
     /* Dots */
@@ -145,6 +166,14 @@ const slides = [
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .arrow i {
+        font-size: 22px;
+        transition: transform 0.3s ease;
+    }
+
+    .arrow:hover i {
+        /* transform: scale(1.2); */
     }
 
     .arrow:hover {
@@ -192,21 +221,25 @@ const slides = [
     {
         slides.map((s, i) => (
             <div
-                class={`slide ${i === 0 ? "active" : ""}`}
+                class={`slide ${i === 0 ? "active" : i === slides.length - 1 ? "prev" : "next"}`}
                 style={`background-image: url('${s.img}')`}
             >
                 <div class="overlay" />
                 <div class="slide-content">
                     <h1>{s.title}</h1>
                     <p>{s.subtitle}</p>
-                    <a href={s.link}>{s.cta}</a>
+                    <a href={s.link}>
+                        <span>{s.cta}</span>
+                        <i class="fa-solid fa-arrow-right-long" />{" "}
+                    </a>
                 </div>
             </div>
         ))
     }
 
-    <div class="arrow left">&#10094;</div>
-    <div class="arrow right">&#10095;</div>
+    <!-- ✅ Arrows with Icons -->
+    <div class="arrow left"><i class="fa-solid fa-chevron-left"></i></div>
+    <div class="arrow right"><i class="fa-solid fa-chevron-right"></i></div>
 
     <div class="dots">
         {
@@ -218,19 +251,19 @@ const slides = [
 </div>
 
 <script is:inline>
-    const slideEls = document.querySelectorAll(".slide");
+    const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
-    const arrowLeft = document.querySelector(".arrow.left");
-    const arrowRight = document.querySelector(".arrow.right");
+    const leftArrow = document.querySelector(".arrow.left");
+    const rightArrow = document.querySelector(".arrow.right");
     let index = 0;
 
     function updateSlides(newIndex) {
-        slideEls.forEach((s, i) => {
-            s.classList.remove("active", "prev", "next");
-            if (i === newIndex) s.classList.add("active");
-            else if (i === (newIndex - 1 + slideEls.length) % slideEls.length)
-                s.classList.add("prev");
-            else s.classList.add("next");
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active", "prev", "next");
+            if (i === newIndex) slide.classList.add("active");
+            else if (i === (newIndex - 1 + slides.length) % slides.length)
+                slide.classList.add("prev");
+            else slide.classList.add("next");
         });
 
         dots.forEach((d) => d.classList.remove("active"));
@@ -240,10 +273,10 @@ const slides = [
     }
 
     function nextSlide() {
-        updateSlides((index + 1) % slideEls.length);
+        updateSlides((index + 1) % slides.length);
     }
     function prevSlide() {
-        updateSlides((index - 1 + slideEls.length) % slideEls.length);
+        updateSlides((index - 1 + slides.length) % slides.length);
     }
 
     dots.forEach((dot) =>
@@ -251,27 +284,9 @@ const slides = [
             updateSlides(parseInt(dot.dataset.index)),
         ),
     );
+    rightArrow.addEventListener("click", nextSlide);
+    leftArrow.addEventListener("click", prevSlide);
 
-    arrowRight.addEventListener("click", nextSlide);
-    arrowLeft.addEventListener("click", prevSlide);
-
+    // Auto play
     // setInterval(nextSlide, 7000);
 </script>
-
-<style>
-    .slide.prev {
-        transform: translateX(-100%);
-    }
-    .slide.active {
-        transform: translateX(0);
-    }
-    .slide.next {
-        transform: translateX(100%);
-    }
-    .slide {
-        transition:
-            transform 1s ease,
-            opacity 1s ease;
-        opacity: 1;
-    }
-</style>
