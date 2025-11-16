@@ -2,13 +2,16 @@
 
 
 :root {
-    --main: #80d1ea;
+    --font-main: 'Quicksand', sans-serif;
+    --main: #81D1E7;
+    /*#81D1E7; */
     --main-hover: #3ccbef;
     --main-bg: #f9f9f9;
-    --accent: #f4e3c3;
+    --accent: #fcf8c3;
     --accent-hover: #f5ddaf;
-    --text: #102a43;
-    --text-light: #888;
+    --text: #1b3d6c;
+    /*#1b3d6c; */
+    --text-light: #555555;
     --white: #ffffff;
     --nav-height: 90px;
     --card-bg: #ffffff;
@@ -21,7 +24,7 @@
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-main);
     /* font-family: 'Nunito Sans', sans-serif; */
 
     margin: 0;
@@ -41,7 +44,6 @@ main {
 p {
     line-height: 1.6;
     margin-bottom: 1.5rem;
-    letter-spacing: .5px;
 }
 
 .hero {

@@ -120,12 +120,11 @@ const { iconClass, title, description } = Astro.props;
         background-color: var(--accent);
         z-index: -1;
     }
-    .card:hover .icon i {
+    .card:hover .icon i::before {
         color: var(--white);
-        /* transform: scale(1.2); */
     }
-    .card:hover .icon i::after {
-        color: var(--text);
+    .card:hover i::after {
+        background: var(--accent-hover);
     }
     .card:hover h3,
     .card:hover p {

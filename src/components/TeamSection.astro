@@ -1,3 +1,8 @@
+---
+import Section from "../ui/Section.astro";
+import Info from "./Info.astro";
+---
+
 <style>
     /* Wrapper holds the whole section */
     .sticky-section {
@@ -17,9 +22,7 @@
         background-size: cover;
         background-position: center;
         background-attachment: fixed; /* smooth professional parallax */
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 1px;
         z-index: 1;
     }
 
@@ -70,31 +73,13 @@
 <div class="sticky-section">
     <!-- Sticky Image Layer -->
     <div class="sticky-image">
-        <h1>Beautiful Sticky Hero</h1>
+        <!-- <Section
+            title="Why Choose TabeMed"
+            subTitle="Discover the benefits of using TabeMed for your medical appointment bookings."
+        > -->
+        <!-- <div class="team-members"></div> -->
+
+        <Info />
+        <!-- </Section> -->
     </div>
-
-    <!-- Smooth Scrolling Content -->
-    <!-- <div class="scroll-text">
-        <h2>Professional Sticky Scroll</h2>
-        <p>
-            This section shows a full-screen sticky image that stays in place
-            while the content scrolls over it. The background uses a clean
-            gradient overlay with a parallax effect, and the text is readable,
-            smooth, and professional.
-        </p>
-
-        <p>
-            This layout is similar to Apple product pages and high-end landing
-            pages. It adds depth and modern style to your website.
-        </p>
-
-        <p>
-            Continue adding more paragraphs or elements as needed. Everything
-            scrolls elegantly, and the visual hierarchy stays perfect.
-        </p>
-
-        <p style="margin-top:300px;">
-            End of example section — you can now build more sections below.
-        </p>
-    </div> -->
 </div>
