@@ -4,18 +4,20 @@ import ACT from "../components/ACT.astro";
 import Features from "../components/Features.astro";
 import Hero from "../components/Hero.astro";
 import Info from "../components/Info.astro";
+import QA from "../components/QA.astro";
 import Services from "../components/Services.astro";
 import TeamSection from "../components/TeamSection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 ---
 
-<BaseLayout>
+<BaseLayout title="Home">
 	<Hero />
 	<Features />
 	<AboutSection />
 	<Info />
 	<ACT />
 	<Services />
+	<QA />
 	<TeamSection />
 </BaseLayout>
