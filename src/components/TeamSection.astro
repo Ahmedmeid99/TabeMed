@@ -1,14 +1,12 @@
 ---
-import Section from "../ui/Section.astro";
-import Info from "./Info.astro";
+/* No JS required — pure HTML + CSS */
 ---
 
 <style>
-    /* Wrapper holds the whole section */
+    /* Wrapper holds entire section */
     .sticky-section {
         position: relative;
         width: 100%;
-        /* height: 200vh;  */
         overflow: visible;
     }
 
@@ -16,17 +14,18 @@ import Info from "./Info.astro";
     .sticky-image {
         position: sticky;
         top: 0;
-        height: 100vh; /* full-screen sticky */
+        height: 100vh;
         background: linear-gradient(#80d1eadd, #80d1ea9d),
             url("../../public/images/01.jpg");
         background-size: cover;
         background-position: center;
-        background-attachment: fixed; /* smooth professional parallax */
-        padding: 1px;
+        background-attachment: fixed;
         z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    /* Optional title over sticky image */
     .sticky-image h1 {
         color: white;
         font-size: 3rem;
@@ -44,42 +43,166 @@ import Info from "./Info.astro";
         }
     }
 
-    /* Scrolling text layer */
+    /* Scroll content */
     .scroll-text {
-        position: absolute;
-        top: 100vh; /* starts immediately after the sticky image */
+        /* position: absolute; */
+        /* top: 100vh; */
         width: 100%;
+        /* background: white; */
+        /* padding: 4rem 1.5rem; */
+        /* box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); */
         z-index: 3;
-        background: white;
-        padding: 4rem 1.5rem;
-        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
     }
 
     .scroll-text h2 {
-        font-size: 2rem;
+        font-size: 2.4rem;
         font-weight: 700;
-        color: #105975;
+        color: var(--text);
+        margin-bottom: 1.5rem;
+        text-align: center;
     }
 
     .scroll-text p {
         font-size: 1.1rem;
-        line-height: 1.8rem;
-        margin-bottom: 2rem;
-        color: #333;
+        line-height: 1.8;
+        color: var(--text-light);
+        text-align: center;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ===================== CONTACT FORM ===================== */
+    .contact-form {
+        max-width: 700px;
+        margin: 0 auto;
+        /* background: var(--card-bg, #fff); */
+        padding: 2rem;
+        border-radius: 14px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-row {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-row > div {
+        flex: 1;
+    }
+
+    label {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 0.4rem;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        border: 2px solid #eee;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: var(--font-main);
+        background-color: transparent;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: var(--main);
+        box-shadow: 0 0 0 2px rgba(129, 209, 231, 0.25);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 150px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        margin-top: 1rem;
+        background: var(--main);
+        color: var(--white);
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: var(--main-hover);
+    }
+
+    @media (max-width: 768px) {
+        .contact-row {
+            flex-direction: column;
+        }
     }
 </style>
 
-<!-- Section Wrapper -->
+<!-- SECTION START -->
 <div class="sticky-section">
-    <!-- Sticky Image Layer -->
+    <!-- Sticky hero image -->
     <div class="sticky-image">
-        <!-- <Section
-            title="Why Choose TabeMed"
-            subTitle="Discover the benefits of using TabeMed for your medical appointment bookings."
-        > -->
-        <!-- <div class="team-members"></div> -->
+        <!-- Contact form section -->
+        <div class="scroll-text">
+            <form class="contact-form">
+                <div class="contact-row">
+                    <div>
+                        <label for="name">Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        />
+                    </div>
 
-        <!-- <Info /> -->
-        <!-- </Section> -->
+                    <div>
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        />
+                    </div>
+                </div>
+
+                <div class="contact-row">
+                    <div>
+                        <label for="phone">Phone Number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter your phone"
+                        />
+                    </div>
+
+                    <div>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Subject" />
+                    </div>
+                </div>
+
+                <label for="message">Message</label>
+                <textarea
+                    id="message"
+                    placeholder="Write your message..."
+                    required></textarea>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </div>
 </div>

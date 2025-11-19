@@ -15,6 +15,9 @@
     --white: #ffffff;
     --nav-height: 90px;
     --card-bg: #ffffff;
+    --main-rgb: 129, 209, 231;
+    /* manually extracted rgb from #81D1E7 */
+
 }
 
 * {
@@ -39,6 +42,7 @@ body {
 /* small styling for demo page */
 main {
     overflow-x: hidden;
+    padding: 5rem 0 0;
 }
 
 p {

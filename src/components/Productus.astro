@@ -1,0 +1,136 @@
+---
+/* PRODUCT DATA – Using your images 01, 02, 03 */
+const products = [
+    {
+        title: "Digital Thermometer",
+        image: "/images/01.jpg",
+        desc: "Fast and accurate digital thermometer suitable for all ages.",
+        price: "$24.99",
+    },
+    {
+        title: "Blood Pressure Monitor",
+        image: "/images/02.jpg",
+        desc: "Accurate and easy-to-use home blood pressure monitor.",
+        price: "$69.99",
+    },
+    {
+        title: "Pulse Oximeter",
+        image: "/images/03.jpg",
+        desc: "Measures blood oxygen level and heart rate instantly.",
+        price: "$34.99",
+    },
+];
+---
+
+<style>
+    .products-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1rem;
+        font-family: var(--font-main);
+        text-align: center;
+    }
+
+    .products-title {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 2rem;
+    }
+
+    /* Product grid */
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Card style */
+    .product-card {
+        background: var(--white);
+        padding: 1.2rem;
+        border-radius: 16px;
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 14px;
+        margin-bottom: 1rem;
+    }
+
+    .product-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 0.4rem;
+    }
+
+    .product-desc {
+        font-size: 1rem;
+        color: var(--text-light);
+        margin-bottom: 0.8rem;
+        line-height: 1.5rem;
+    }
+
+    .product-price {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--main);
+        margin-bottom: 0.5rem;
+    }
+
+    /* STORE BUTTON */
+    .store-btn {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.9rem 2rem;
+        background: var(--main);
+        color: var(--white);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: 0.3s;
+    }
+
+    .store-btn:hover {
+        background: var(--main-hover);
+    }
+</style>
+
+<div class="products-section">
+    <h2 class="products-title">Our Products</h2>
+
+    <!-- Product Cards -->
+    <div class="products-grid">
+        {
+            products.map((p) => (
+                <div class="product-card">
+                    <img
+                        src={p.image}
+                        class="product-image"
+                        alt={p.title}
+                        loading="lazy"
+                    />
+                    <div class="product-title">{p.title}</div>
+                    <div class="product-desc">{p.desc}</div>
+                    <div class="product-price">{p.price}</div>
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- GO TO STORE BUTTON -->
+    <a href="/store" class="store-btn">Go to Store</a>
+</div>

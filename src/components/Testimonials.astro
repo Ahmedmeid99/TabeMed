@@ -1,0 +1,248 @@
+---
+import Section from "../ui/Section.astro";
+
+const testimonials = [
+    {
+        name: "Sarah Johnson",
+        role: "Patient",
+        image: "/images/01.jpg",
+        quote: "TabeMed made booking my appointment so easy! The whole experience was fast and simple.",
+        rating: 5,
+    },
+    {
+        name: "Dr. Ahmed Samir",
+        role: "Cardiologist",
+        image: "/images/02.jpg",
+        quote: "This platform helps us organize patient visits more efficiently. It really improves clinic workflow.",
+        rating: 5,
+    },
+    {
+        name: "Michael Lee",
+        role: "User",
+        image: "/images/03.jpg",
+        quote: "Clean, intuitive and reliable. Best healthcare app experience I’ve had so far.",
+        rating: 4,
+    },
+];
+
+const makeStars = (rating: number) =>
+    "★".repeat(rating) + "☆".repeat(5 - rating);
+---
+
+<style>
+    .ts-section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        font-family: var(--font-main, "Quicksand", sans-serif);
+        position: relative;
+    }
+
+    .ts-title {
+        text-align: center;
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--text, #1b3d6c);
+        margin-bottom: 2rem;
+    }
+
+    .ts-slider {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+    }
+
+    .ts-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transform: translateX(30px);
+        transition:
+            opacity 0.6s ease,
+            transform 0.6s ease;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 1rem 2rem;
+        background: var(--card-bg, #ffffff);
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .ts-slide.ts-active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .ts-slide img {
+        width: 110px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--main, #81d1e7);
+    }
+
+    .ts-content {
+        flex: 1;
+    }
+
+    .ts-quote {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: var(--text, #1b3d6c);
+        font-style: italic;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-left: 1.4rem;
+    }
+
+    .ts-quote::before {
+        content: "“";
+        font-size: 2.2rem;
+        color: var(--main, #81d1e7);
+        position: absolute;
+        left: -0.1rem;
+        top: -0.8rem;
+    }
+
+    .ts-quote::after {
+        content: "”";
+        font-size: 2.2rem;
+        color: var(--main, #81d1e7);
+        margin-left: 0.3rem;
+    }
+
+    .ts-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text, #1b3d6c);
+    }
+
+    .ts-role {
+        color: var(--text-light, #555);
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .ts-stars {
+        color: #f1c40f;
+        font-size: 1.1rem;
+    }
+
+    .ts-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 1.5rem;
+    }
+
+    .ts-dot {
+        width: 12px;
+        height: 12px;
+        background: var(--main, #81d1e7);
+        opacity: 0.4;
+        border-radius: 50%;
+        cursor: pointer;
+        transition:
+            0.3s transform ease,
+            0.3s opacity ease;
+    }
+
+    .ts-dot.ts-active {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+    @media (max-width: 850px) {
+        .ts-slide {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+            padding: 1.5rem 1.2rem;
+        }
+
+        .ts-slider {
+            height: auto;
+            min-height: 380px;
+        }
+    }
+</style>
+
+<Section
+    title="What Our Users Say"
+    subTitle="Testimonials from our satisfied users"
+>
+    <div class="ts-section" data-testimonials>
+        <div class="ts-slider">
+            {
+                testimonials.map((t, i) => (
+                    <div class={`ts-slide ${i === 0 ? "ts-active" : ""}`}>
+                        <img src={t.image} alt={t.name} loading="lazy" />
+
+                        <div class="ts-content">
+                            <p class="ts-quote">{t.quote}</p>
+                            <div class="ts-name">{t.name}</div>
+                            <div class="ts-role">{t.role}</div>
+                            <div class="ts-stars">{makeStars(t.rating)}</div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="ts-dots">
+            {
+                testimonials.map((_, i) => (
+                    <div
+                        class={`ts-dot ${i === 0 ? "ts-active" : ""}`}
+                        data-index={i}
+                    />
+                ))
+            }
+        </div>
+    </div>
+</Section>
+<script is:inline>
+    window.addEventListener("DOMContentLoaded", () => {
+        const root = document.querySelector("[data-testimonials]");
+        if (!root) return;
+
+        const slides = root.querySelectorAll(".ts-slide");
+        const dots = root.querySelectorAll(".ts-dot");
+        if (!slides.length || !dots.length) return;
+
+        let index = 0;
+
+        function showSlide(i) {
+            slides.forEach((s) => s.classList.remove("ts-active"));
+            dots.forEach((d) => d.classList.remove("ts-active"));
+
+            slides[i].classList.add("ts-active");
+            dots[i].classList.add("ts-active");
+
+            index = i;
+        }
+
+        // autoplay
+        const intervalTime = 5000;
+        let timer = setInterval(() => {
+            showSlide((index + 1) % slides.length);
+        }, intervalTime);
+
+        // reset timer when user clicks
+        function goTo(i) {
+            showSlide(i);
+            clearInterval(timer);
+            timer = setInterval(() => {
+                showSlide((index + 1) % slides.length);
+            }, intervalTime);
+        }
+
+        dots.forEach((dot) => {
+            dot.addEventListener("click", () => {
+                const i = parseInt(dot.dataset.index, 10);
+                if (!Number.isNaN(i)) goTo(i);
+            });
+        });
+    });
+</script>

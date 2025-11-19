@@ -9,6 +9,18 @@ import ActiveLink from "../lib/ActiveLink.astro";
     .nav-wrap {
         background: linear-gradient(90deg, var(--main), #6fd3e6);
         z-index: 30;
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
+    .navbar-top {
+        background: var(--accent);
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 38px;
+        height: 50px;
+        padding: 0 2rem;
     }
 
     header.navbar {
