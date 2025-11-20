@@ -191,6 +191,37 @@ import ActiveLink from "../lib/ActiveLink.astro";
     .side-menu.open {
         transform: translateX(0);
     }
+    #closeSide {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 42px;
+        height: 42px;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--white);
+        cursor: pointer;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        transition: 0.25s ease;
+    }
+
+    #closeSide:hover {
+        background: var(--accent-hover)
+        transform: scale(1.08);
+    }
+
+    #closeSide i {
+        pointer-events: none;
+        font-size: 1.3rem;
+        color: var(--text);
+
+    }
 
     .side-top {
         display: flex;
@@ -343,7 +374,9 @@ import ActiveLink from "../lib/ActiveLink.astro";
                 <Image src={logo} alt="Company Logo" height={80} />
             </div>
         </div>
-        <button id="closeSide">✕</button>
+        <button id="closeSide">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
     </div>
 
     <nav class="side-links">
