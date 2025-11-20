@@ -274,7 +274,7 @@ import ActiveLink from "../lib/ActiveLink.astro";
                 text="About"
                 current={Astro.url.pathname}
             />
-            <div class="dropdown" id="servicesDropdown">
+            <!-- <div class="dropdown" id="servicesDropdown">
                 <button>
                     <ActiveLink
                         href="/services"
@@ -302,10 +302,15 @@ import ActiveLink from "../lib/ActiveLink.astro";
                         current={Astro.url.pathname}
                     />
                 </div>
-            </div>
+            </div> -->
             <ActiveLink
                 href="/gallery"
                 text="Gallery"
+                current={Astro.url.pathname}
+            />
+            <ActiveLink
+                href="/services"
+                text="Services"
                 current={Astro.url.pathname}
             />
             <ActiveLink
@@ -339,14 +344,18 @@ import ActiveLink from "../lib/ActiveLink.astro";
     <nav class="side-links">
         <a href="/">Home</a>
         <a href="/about">About</a>
-        <details>
+
+        <a href="/serviecs">Services</a>
+        <a href="/gallery">Gallery</a>
+
+        <!-- <details>
             <summary>Services</summary>
             <div class="nested-links">
                 <a href="/services/Consulting">Consulting</a>
                 <a href="/services/development">Development</a>
                 <a href="/services/design">Design</a>
             </div>
-        </details>
+        </details> -->
         <a href="/products">Products</a>
         <a href="/contactus">Contact</a>
     </nav>

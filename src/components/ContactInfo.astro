@@ -1,0 +1,121 @@
+---
+import Section from "../ui/Section.astro";
+
+/* Contact Info Component */
+---
+
+<style>
+    .contact-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-template-rows: repeat(2, auto); /* 2 rows */
+        gap: 1.5rem 2rem; /* space between items */
+        margin-bottom: 60px; /* requested spacing */
+        padding: 2rem;
+        background: var(--card-bg, #fff);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        font-family: var(--font-main);
+    }
+
+    .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .icon-box {
+        width: 48px;
+        height: 48px;
+        background: rgba(129, 209, 231, 0.2);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--main);
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+
+    .info-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-text strong {
+        font-size: 1.2rem;
+        color: var(--text);
+        font-weight: 700;
+    }
+
+    .info-text span,
+    .info-text a {
+        font-size: 1rem;
+        color: var(--text-light);
+        text-decoration: none;
+        margin-top: 2px;
+    }
+
+    .info-text a:hover {
+        color: var(--main);
+    }
+
+    @media (max-width: 700px) {
+        .contact-grid {
+            grid-template-columns: 1fr; /* stack items on mobile */
+            grid-template-rows: auto;
+        }
+    }
+</style>
+
+<Section
+    title="Contact Information"
+    subTitle="We'd love to hear from you! Here are the ways you can reach us:"
+>
+    <div class="contact-grid">
+        <!-- Location -->
+        <div class="info-item">
+            <div class="icon-box">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="info-text">
+                <strong>Our Location</strong>
+                <span>123 Mobility Street, Cairo, Egypt</span>
+            </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="info-item">
+            <div class="icon-box">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="info-text">
+                <strong>Phone</strong>
+                <a href="tel:+201234567890">+20 123 456 7890</a>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="info-item">
+            <div class="icon-box">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="info-text">
+                <strong>Email</strong>
+                <a href="mailto:info@tabemed.com">info@tabemed.com</a>
+            </div>
+        </div>
+
+        <!-- Hours -->
+        <div class="info-item">
+            <div class="icon-box">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="info-text">
+                <strong>Working Hours</strong>
+                <span>Sat – Thu, 9:00 AM – 6:00 PM</span>
+            </div>
+        </div>
+    </div>
+</Section>

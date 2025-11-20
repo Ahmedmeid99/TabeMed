@@ -1,13 +1,12 @@
 ---
-const { href, text, current, color } = Astro.props;
-const isActive = current === href || current.startsWith(href);
+const { href, text, current } = Astro.props;
+const isHome = href === "/";
+const isActive = isHome
+    ? current === "/"
+    : current === href || current.startsWith(href + "/");
 ---
 
-<a
-    href={href}
-    style={{ color: `${color || "#fff"}` }}
-    class={isActive ? "active" : ""}>{text}</a
->
+<a href={href} class={isActive ? "active" : ""}>{text}</a>
 
 <style>
     a {
