@@ -50,7 +50,7 @@ import Section from "../ui/Section.astro";
     } */
 
     .box-icon {
-        font-size: 3rem;
+        font-size: 2rem;
         color: var(--main, #0088a9);
         margin-bottom: 0.5rem;
         transition:
@@ -64,7 +64,7 @@ import Section from "../ui/Section.astro";
     } */
 
     .num {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: bold;
         color: #105975;
         margin-bottom: 0.3rem;
@@ -75,7 +75,7 @@ import Section from "../ui/Section.astro";
     } */
 
     .slug {
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: var(--text-light);
 
         transition: color 0.3s;
@@ -102,29 +102,35 @@ import Section from "../ui/Section.astro";
 <Section>
     <div class="features-container">
         <div class="box">
-            <div class="box-icon"><i class="fa-solid fa-user-doctor"></i></div>
-            <div class="num">150+</div>
-            <div class="slug">Doctors Available</div>
-        </div>
-
-        <div class="box">
-            <div class="box-icon"><i class="fa-solid fa-hospital"></i></div>
-            <div class="num">30+</div>
-            <div class="slug">Clinics & Centers</div>
+            <div class="box-icon">
+                <i class="fa-solid fa-person-walking"></i>
+            </div>
+            <div class="num">2,500+</div>
+            <div class="slug">Mobility Restored</div>
         </div>
 
         <div class="box">
             <div class="box-icon">
-                <i class="fa-solid fa-calendar-check"></i>
+                <i class="fa-solid fa-toolbox"></i>
             </div>
-            <div class="num">10K+</div>
-            <div class="slug">Appointments Booked</div>
+            <div class="num">900+</div>
+            <div class="slug">Prosthetics & Orthotics Delivered</div>
         </div>
 
         <div class="box">
-            <div class="box-icon"><i class="fa-solid fa-users"></i></div>
-            <div class="num">8K+</div>
-            <div class="slug">Happy Patients</div>
+            <div class="box-icon">
+                <i class="fa-solid fa-microscope"></i>
+            </div>
+            <div class="num">1,200+</div>
+            <div class="slug">Clinical Assessments</div>
+        </div>
+
+        <div class="box">
+            <div class="box-icon">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="num">98%</div>
+            <div class="slug">Patient Satisfaction</div>
         </div>
     </div>
 </Section>

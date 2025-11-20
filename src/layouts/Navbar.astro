@@ -269,11 +269,15 @@ import ActiveLink from "../lib/ActiveLink.astro";
 
         <nav class="main-nav">
             <ActiveLink href="/" text="Home" current={Astro.url.pathname} />
-            <ActiveLink href="#" text="About" current={Astro.url.pathname} />
+            <ActiveLink
+                href="/about"
+                text="About"
+                current={Astro.url.pathname}
+            />
             <div class="dropdown" id="servicesDropdown">
                 <button>
                     <ActiveLink
-                        href="#"
+                        href="/services"
                         text="Services"
                         current={Astro.url.pathname}
                     />
@@ -283,24 +287,37 @@ import ActiveLink from "../lib/ActiveLink.astro";
                 >
                 <div class="dropdown-menu">
                     <ActiveLink
-                        href="#"
+                        href="/services/consulting"
                         text="Consulting"
                         current={Astro.url.pathname}
                     />
                     <ActiveLink
-                        href="#"
+                        href="/services/development"
                         text="Development"
                         current={Astro.url.pathname}
                     />
                     <ActiveLink
-                        href="#"
+                        href="/services/design"
                         text="Design"
                         current={Astro.url.pathname}
                     />
                 </div>
             </div>
-            <ActiveLink href="#" text="Blog" current={Astro.url.pathname} />
-            <ActiveLink href="#" text="Contact" current={Astro.url.pathname} />
+            <ActiveLink
+                href="/gallery"
+                text="Gallery"
+                current={Astro.url.pathname}
+            />
+            <ActiveLink
+                href="/products"
+                text="Products"
+                current={Astro.url.pathname}
+            />
+            <ActiveLink
+                href="/contactus"
+                text="Contact"
+                current={Astro.url.pathname}
+            />
         </nav>
 
         <div class="nav-actions">
@@ -320,18 +337,18 @@ import ActiveLink from "../lib/ActiveLink.astro";
     </div>
 
     <nav class="side-links">
-        <a href="#">Home</a>
-        <a href="#">About</a>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
         <details>
             <summary>Services</summary>
             <div class="nested-links">
-                <a href="#">Consulting</a>
-                <a href="#">Development</a>
-                <a href="#">Design</a>
+                <a href="/services/Consulting">Consulting</a>
+                <a href="/services/development">Development</a>
+                <a href="/services/design">Design</a>
             </div>
         </details>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
+        <a href="/products">Products</a>
+        <a href="/contactus">Contact</a>
     </nav>
 
     <!-- <button class="btn" style="width:100%;margin-top:auto">Get Started</button> -->

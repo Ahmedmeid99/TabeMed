@@ -1,21 +1,23 @@
 ---
+import Section from "../ui/Section.astro";
+
 /* PRODUCT DATA – Using your images 01, 02, 03 */
 const products = [
     {
         title: "Digital Thermometer",
-        image: "/images/01.jpg",
+        image: "/images/products/01.jpg",
         desc: "Fast and accurate digital thermometer suitable for all ages.",
         price: "$24.99",
     },
     {
         title: "Blood Pressure Monitor",
-        image: "/images/02.jpg",
+        image: "/images/products/02.jpg",
         desc: "Accurate and easy-to-use home blood pressure monitor.",
         price: "$69.99",
     },
     {
         title: "Pulse Oximeter",
-        image: "/images/03.jpg",
+        image: "/images/products/03.jpg",
         desc: "Measures blood oxygen level and heart rate instantly.",
         price: "$34.99",
     },
@@ -24,10 +26,6 @@ const products = [
 
 <style>
     .products-section {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 3rem 1rem;
-        font-family: var(--font-main);
         text-align: center;
     }
 
@@ -109,28 +107,31 @@ const products = [
     }
 </style>
 
-<div class="products-section">
-    <h2 class="products-title">Our Products</h2>
+<Section
+    title="Our Products"
+    subTitle="Explore our range of health monitoring devices designed for accuracy and ease of use."
+>
+    <div class="products-section">
+        <!-- Product Cards -->
+        <div class="products-grid">
+            {
+                products.map((p) => (
+                    <div class="product-card">
+                        <img
+                            src={p.image}
+                            class="product-image"
+                            alt={p.title}
+                            loading="lazy"
+                        />
+                        <div class="product-title">{p.title}</div>
+                        <div class="product-desc">{p.desc}</div>
+                        <div class="product-price">{p.price}</div>
+                    </div>
+                ))
+            }
+        </div>
 
-    <!-- Product Cards -->
-    <div class="products-grid">
-        {
-            products.map((p) => (
-                <div class="product-card">
-                    <img
-                        src={p.image}
-                        class="product-image"
-                        alt={p.title}
-                        loading="lazy"
-                    />
-                    <div class="product-title">{p.title}</div>
-                    <div class="product-desc">{p.desc}</div>
-                    <div class="product-price">{p.price}</div>
-                </div>
-            ))
-        }
+        <!-- GO TO STORE BUTTON -->
+        <a href="/store" class="store-btn">Go to Store</a>
     </div>
-
-    <!-- GO TO STORE BUTTON -->
-    <a href="/store" class="store-btn">Go to Store</a>
-</div>
+</Section>
