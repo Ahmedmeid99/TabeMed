@@ -142,7 +142,10 @@ import ActiveLink from "../lib/ActiveLink.astro";
         gap: 0.6rem;
         align-items: center;
     }
-
+    .btn a {
+        color: var(--text);
+        text-decoration: none;
+    }
     .btn {
         background: var(--accent);
         color: var(--text);
@@ -326,7 +329,7 @@ import ActiveLink from "../lib/ActiveLink.astro";
         </nav>
 
         <div class="nav-actions">
-            <button class="btn">Get Started</button>
+            <button class="btn"><a href="contactus">Get in touch</a></button>
         </div>
     </header>
 </div>
