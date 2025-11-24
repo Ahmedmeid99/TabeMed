@@ -65,6 +65,13 @@ import aboutImage from "../../public/images/01.jpg";
         max-width: 600px;
     }
 
+    .about-content .sub-quote {
+        font-size: 1rem;
+        line-height: 1.9rem;
+        color: #444;
+        max-width: 600px;
+    }
+
     /* ========================= LIST WITH ICON ========================= */
     .about-content ul {
         margin-top: 1.2rem;
@@ -77,7 +84,7 @@ import aboutImage from "../../public/images/01.jpg";
     }
 
     .about-content ul li {
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: #333;
         display: flex;
         align-items: center;
@@ -88,7 +95,7 @@ import aboutImage from "../../public/images/01.jpg";
         width: 34px;
         height: 34px;
         min-width: 34px;
-        background: rgba(16, 89, 117, 0.12);
+        background: #81d1e752;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -97,7 +104,7 @@ import aboutImage from "../../public/images/01.jpg";
 
     .about-content ul li .icon span {
         font-size: 1.25rem;
-        color: #105975;
+        color: var(--main);
         font-weight: 700;
     }
 
@@ -190,8 +197,16 @@ import aboutImage from "../../public/images/01.jpg";
         opacity: 1;
     }
 
+    video {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
+        background: #000;
+    }
+
     .video-wrapper {
-        width: 80%;
+        height: 100%;
         max-width: 800px;
         background: #000;
         border-radius: 10px;
@@ -257,7 +272,7 @@ import aboutImage from "../../public/images/01.jpg";
                 movement, comfort, and dignity.
             </p>
 
-            <p>
+            <p class="sub-quote">
                 TabeMed delivers prosthetics, orthotics, and mobility care
                 designed around real-life comfort — helping every person walk
                 farther, stand longer, and live with confidence.
@@ -289,41 +304,41 @@ import aboutImage from "../../public/images/01.jpg";
         </div>
     </div>
 </Section>
-
 <!-- VIDEO MODAL -->
 <div class="video-modal" id="videoModal">
     <div class="video-wrapper">
         <div class="close-video" id="closeVideo">×</div>
-        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+
+        <video id="localVideo" controls>
+            <source src="/images/video.mp4" type="video/mp4" />
+        </video>
     </div>
 </div>
 
 <script is:inline>
-    // Elements
     const videoTrigger = document.getElementById("videoTrigger");
     const videoModal = document.getElementById("videoModal");
-    const videoFrame = document.getElementById("videoFrame");
+    const localVideo = document.getElementById("localVideo");
     const closeVideo = document.getElementById("closeVideo");
-
-    const videoURL = "https://www.youtube.com/embed/jfKfPfyJRdk"; // 🔴 change to your video
 
     // Open modal
     videoTrigger.addEventListener("click", () => {
         videoModal.classList.add("active");
-        videoFrame.src = videoURL + "?autoplay=1";
+        localVideo.currentTime = 0;
+        localVideo.play();
     });
 
     // Close modal
     closeVideo.addEventListener("click", () => {
         videoModal.classList.remove("active");
-        videoFrame.src = "";
+        localVideo.pause();
     });
 
-    // Close on outside click
+    // Close when clicking outside video
     videoModal.addEventListener("click", (e) => {
         if (e.target === videoModal) {
             videoModal.classList.remove("active");
-            videoFrame.src = "";
+            localVideo.pause();
         }
     });
 </script>

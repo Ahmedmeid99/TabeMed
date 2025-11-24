@@ -1,16 +1,13 @@
 ---
-/* No JS required — pure HTML + CSS */
+/* Contact section with EmailJS fully working */
 ---
 
 <style>
-    /* Wrapper holds entire section */
     .sticky-section {
         position: relative;
         width: 100%;
-        overflow: visible;
     }
 
-    /* Sticky image container */
     .sticky-image {
         position: sticky;
         top: 0;
@@ -24,63 +21,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 2rem;
     }
 
-    .sticky-image h1 {
-        color: white;
-        font-size: 3rem;
-        font-weight: 800;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        transform: translateY(40px);
-        animation: fadeUp 1s ease-out forwards;
-    }
-
-    @keyframes fadeUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Scroll content */
-    .scroll-text {
-        /* position: absolute; */
-        /* top: 100vh; */
-        width: 100%;
-        /* background: white; */
-        /* padding: 4rem 1.5rem; */
-        /* box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); */
-        z-index: 3;
-    }
-
-    .scroll-text h2 {
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: var(--text);
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
-    .scroll-text p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: var(--text-light);
-        text-align: center;
-        margin-bottom: 2.5rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* ===================== CONTACT FORM ===================== */
     .contact-form {
         max-width: 700px;
-        margin: 0 auto;
-        /* background: var(--card-bg, #fff); */
+        width: 100%;
         padding: 2rem;
         border-radius: 14px;
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .contact-row {
@@ -89,120 +39,116 @@
         margin-bottom: 1rem;
     }
 
-    .contact-row > div {
-        flex: 1;
-    }
-
-    label {
-        display: block;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text);
-        margin-bottom: 0.4rem;
-    }
-
     input,
     textarea {
         width: 100%;
         padding: 0.9rem 1rem;
-        border: 2px solid #eee;
         border-radius: 8px;
-        font-size: 1rem;
-        font-family: var(--font-main);
-        background-color: transparent;
-        outline: none;
-        transition: 0.2s;
-    }
-
-    input:focus,
-    textarea:focus {
-        border-color: var(--main);
-        box-shadow: 0 0 0 2px rgba(129, 209, 231, 0.25);
+        border: 2px solid #eee;
     }
 
     textarea {
-        resize: vertical;
         min-height: 150px;
     }
 
-    .submit-btn {
-        width: 100%;
+    #form-status {
         margin-top: 1rem;
-        background: var(--main);
-        color: var(--white);
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .submit-btn {
+        margin-top: 1rem;
+        width: 100%;
         padding: 1rem;
-        font-size: 1.1rem;
-        font-weight: 700;
-        border: none;
         border-radius: 8px;
+        border: none;
+        color: white;
+        background: var(--main);
         cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .submit-btn:hover {
-        background: var(--main-hover);
-    }
-
-    @media (max-width: 768px) {
-        .contact-row {
-            flex-direction: column;
-        }
+        font-size: 1.1rem;
     }
 </style>
 
-<!-- SECTION START -->
-<div class="sticky-section" id="form">
-    <!-- Sticky hero image -->
+<!-- EmailJS Library (ONE TIME ONLY) -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<div class="sticky-section">
     <div class="sticky-image">
-        <!-- Contact form section -->
+        <!-- ADDED scroll-text wrapper FIX -->
         <div class="scroll-text">
-            <form class="contact-form">
+            <form class="contact-form" id="contactForm" novalidate>
                 <div class="contact-row">
                     <div>
-                        <label for="name">Full Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="Enter your name"
-                            required
-                        />
+                        <label>Full Name</label>
+                        <input type="text" name="user_name" required />
                     </div>
 
                     <div>
-                        <label for="email">Email Address</label>
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Enter your email"
-                            required
-                        />
+                        <label>Email Address</label>
+                        <input type="email" name="user_email" required />
                     </div>
                 </div>
 
                 <div class="contact-row">
                     <div>
-                        <label for="phone">Phone Number</label>
-                        <input
-                            type="tel"
-                            id="phone"
-                            placeholder="Enter your phone"
-                        />
+                        <label>Phone Number</label>
+                        <input type="tel" name="user_phone" />
                     </div>
 
                     <div>
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" placeholder="Subject" />
+                        <label>Subject</label>
+                        <input type="text" name="user_subject" />
                     </div>
                 </div>
 
-                <label for="message">Message</label>
-                <textarea
-                    id="message"
-                    placeholder="Write your message..."
-                    required></textarea>
+                <label>Message</label>
+                <textarea name="user_message" required></textarea>
 
                 <button type="submit" class="submit-btn">Send Message</button>
+
+                <p id="form-status"></p>
             </form>
         </div>
     </div>
 </div>
+
+<script is:inline>
+    const PUBLIC_KEY = "ThijL73HGDMaw4i7L";
+    const SERVICE = "service_svkc71w";
+    const TEMPLATE = "template_1usngjq";
+
+    const form = document.getElementById("contactForm");
+    const statusText = document.getElementById("form-status");
+    const submitBtn = form.querySelector(".submit-btn");
+
+    emailjs.init(PUBLIC_KEY);
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); // STOP REFRESH
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+
+        emailjs
+            .sendForm(SERVICE, TEMPLATE, form)
+            .then(() => {
+                statusText.textContent =
+                    "✔ Your message has been sent successfully!";
+                statusText.style.color = "green";
+
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message";
+            })
+            .catch((err) => {
+                console.error(err);
+                statusText.textContent =
+                    "❌ Error sending message. Please try again.";
+                statusText.style.color = "red";
+
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message";
+            });
+    });
+</script>
