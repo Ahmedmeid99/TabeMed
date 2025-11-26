@@ -43,7 +43,10 @@ body {
     overflow-x: hidden;
 }
 
-
+::selection {
+    background-color: var(--main);
+    color: var(--accent-hover);
+}
 
 /* small styling for demo page */
 main {
