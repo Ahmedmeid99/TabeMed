@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navbar from "./Navbar.astro";
 import Footer from "./Footer.astro";
 import ScrollToTop from "../lib/ScrollToTop .astro";
+import Loader from "../lib/Loader.astro";
 
 const { title } = Astro.props;
 ---
@@ -45,12 +46,15 @@ const { title } = Astro.props;
     </head>
 
     <body>
-        <Navbar />
+        <!-- Loader Screen -->
+        <Loader />
+        <!-- ScrollToTop Button -->
+        <ScrollToTop />
 
+        <Navbar />
         <main class="main">
             <slot />
         </main>
-        <ScrollToTop />
 
         <Footer />
         <script>
