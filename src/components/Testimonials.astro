@@ -163,7 +163,7 @@ const makeStars = (rating: number) =>
 
         .ts-slider {
             height: auto;
-            min-height: 415px;
+            min-height: 460px;
         }
     }
 </style>
@@ -230,20 +230,53 @@ const makeStars = (rating: number) =>
             showSlide((index + 1) % slides.length);
         }, intervalTime);
 
-        // reset timer when user clicks
-        function goTo(i) {
-            showSlide(i);
+        function resetTimer() {
             clearInterval(timer);
             timer = setInterval(() => {
                 showSlide((index + 1) % slides.length);
             }, intervalTime);
         }
 
+        function goTo(i) {
+            showSlide(i);
+            resetTimer();
+        }
+
+        // Handle dot click
         dots.forEach((dot) => {
             dot.addEventListener("click", () => {
                 const i = parseInt(dot.dataset.index, 10);
                 if (!Number.isNaN(i)) goTo(i);
             });
+        });
+
+        // ------------------------------
+        // 🚀 TOUCH SWIPE SUPPORT
+        // ------------------------------
+        let startX = 0;
+        let endX = 0;
+
+        root.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        root.addEventListener("touchmove", (e) => {
+            endX = e.touches[0].clientX;
+        });
+
+        root.addEventListener("touchend", () => {
+            const diff = startX - endX;
+
+            // Swipe threshold
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    // swipe left → next
+                    goTo((index + 1) % slides.length);
+                } else {
+                    // swipe right → prev
+                    goTo((index - 1 + slides.length) % slides.length);
+                }
+            }
         });
     });
 </script>

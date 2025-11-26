@@ -201,10 +201,10 @@ const slides = [
         .slide-content p {
             font-size: 1rem;
         }
-        /* .arrow.left,
+        .arrow.left,
         .arrow.right {
-            top: 45%;
-        } */
+            display: none;
+        }
         .arrow.left {
             left: 0px;
         }
@@ -304,6 +304,32 @@ const slides = [
     rightArrow.addEventListener("click", nextSlide);
     leftArrow.addEventListener("click", prevSlide);
 
-    // Auto play
+    // ------------------------------
+    // 🚀 MOBILE TOUCH SWIPE SUPPORT
+    // ------------------------------
+    let startX = 0;
+    let endX = 0;
+
+    const slider = document.querySelector(".slider");
+
+    slider.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener("touchmove", (e) => {
+        endX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener("touchend", () => {
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > 50) {
+            if (diff > 0)
+                nextSlide(); // swipe left
+            else prevSlide(); // swipe right
+        }
+    });
+
+    // Auto play (optional)
     // setInterval(nextSlide, 7000);
 </script>
