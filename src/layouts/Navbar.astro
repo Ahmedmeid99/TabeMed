@@ -7,11 +7,12 @@ import ActiveLink from "../lib/ActiveLink.astro";
 <style>
     /* Navbar */
     .nav-wrap {
-        background: linear-gradient(90deg, var(--main), #6fd3e6);
+        background: var(--main);
         z-index: 30;
         position: fixed;
         width: 100%;
         top: 0;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 10%);
     }
     .navbar-top {
         background: var(--accent);
@@ -148,17 +149,19 @@ import ActiveLink from "../lib/ActiveLink.astro";
     }
     .btn {
         background: var(--accent);
+        border: none;
+        border-bottom: 5px solid var(--accent-hover);
+        border-right: 3px solid var(--accent-hover);
         color: var(--text);
         /* padding: 0.5rem 0.9rem; */
         padding: 20px 50px;
         border-radius: 8px;
-        border: 0;
         font-weight: 700;
         cursor: pointer;
     }
 
     .btn:hover {
-        background-color: var(--accent-hover);
+        /* background-color: var(--accent-hover); */
     }
 
     /* Hamburger - mobile */

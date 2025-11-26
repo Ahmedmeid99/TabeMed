@@ -3,9 +3,10 @@
 
 :root {
     --font-main: 'Quicksand', sans-serif;
-    --main: #81D1E7;
+    --main: #4ebddc;
     /*#81D1E7; */
-    --main-hover: #4ebddc;
+    --main-hover: #81D1E7;
+    /*#4ebddc;*/
     --main-bg: #f9f9f9;
     --accent: #fcf8c3;
     --accent-hover: #ffe5b3;
@@ -27,7 +28,7 @@
 }
 
 html {
-    scroll-padding-top: 150px;
+    scroll-padding-top: 270px;
     scroll-behavior: smooth;
 }
 

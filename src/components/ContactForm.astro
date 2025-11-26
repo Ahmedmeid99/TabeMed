@@ -1,4 +1,6 @@
 ---
+import Section from "../ui/Section.astro";
+
 /* Contact section with EmailJS fully working */
 ---
 
@@ -11,7 +13,7 @@
     .sticky-image {
         position: sticky;
         top: 0;
-        height: 100vh;
+        height: 120vh;
         background: linear-gradient(#80d1eadd, #80d1ea9d),
             url("../../public/images/01.jpg");
         background-size: cover;
@@ -37,6 +39,14 @@
         display: flex;
         gap: 1rem;
         margin-bottom: 1rem;
+    }
+
+    .contact-row > div {
+        flex: 1;
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     input,
@@ -67,6 +77,21 @@
         background: var(--main);
         cursor: pointer;
         font-size: 1.1rem;
+        border-bottom: 5px solid var(--main-hover);
+        border-right: 3px solid var(--main-hover);
+    }
+    @media (max-width: 687px) {
+        .contact-row {
+            flex-direction: column;
+        }
+
+        .sticky-image {
+            height: auto;
+            padding: 0px;
+        }
+        .section {
+            padding-top: 0 !important;
+        }
     }
 </style>
 
@@ -77,38 +102,42 @@
     <div class="sticky-image">
         <!-- ADDED scroll-text wrapper FIX -->
         <div class="scroll-text">
-            <form class="contact-form" id="contactForm" novalidate>
-                <div class="contact-row">
-                    <div>
-                        <label>Full Name</label>
-                        <input type="text" name="user_name" required />
+            <Section title="Contact Us">
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="contact-row">
+                        <div>
+                            <label>Full Name</label>
+                            <input type="text" name="user_name" required />
+                        </div>
+
+                        <div>
+                            <label>Email Address</label>
+                            <input type="email" name="user_email" required />
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Email Address</label>
-                        <input type="email" name="user_email" required />
+                    <div class="contact-row">
+                        <div>
+                            <label>Phone Number</label>
+                            <input type="tel" name="user_phone" />
+                        </div>
+
+                        <div>
+                            <label>Subject</label>
+                            <input type="text" name="user_subject" />
+                        </div>
                     </div>
-                </div>
 
-                <div class="contact-row">
-                    <div>
-                        <label>Phone Number</label>
-                        <input type="tel" name="user_phone" />
-                    </div>
+                    <label>Message</label>
+                    <textarea name="user_message" required></textarea>
 
-                    <div>
-                        <label>Subject</label>
-                        <input type="text" name="user_subject" />
-                    </div>
-                </div>
+                    <button type="submit" class="submit-btn"
+                        >Send Message</button
+                    >
 
-                <label>Message</label>
-                <textarea name="user_message" required></textarea>
-
-                <button type="submit" class="submit-btn">Send Message</button>
-
-                <p id="form-status"></p>
-            </form>
+                    <p id="form-status"></p>
+                </form>
+            </Section>
         </div>
     </div>
 </div>
