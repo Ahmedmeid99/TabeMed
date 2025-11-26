@@ -242,7 +242,7 @@ import aboutImage from "../../public/images/01.jpg";
     /* Mobile */
     @media (max-width: 900px) {
         .flex {
-            flex-direction: column;
+            flex-direction: column-reverse;
             text-align: center;
         }
 
@@ -254,9 +254,18 @@ import aboutImage from "../../public/images/01.jpg";
             grid-template-columns: 1fr;
             gap: 0.8rem 1rem;
         }
+        .image-container {
+            flex: auto;
+            overflow: visible;
+        }
 
         .video-wrapper iframe {
             height: 260px;
+        }
+
+        video {
+            /* width: 80%;
+            margin: auto; */
         }
     }
 </style>
