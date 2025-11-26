@@ -54,13 +54,24 @@ const products = [
         color: var(--white);
         border-radius: 8px;
         text-decoration: none;
-        font-weight: 700;
-        font-size: 1.1rem;
         transition: 0.3s;
+        border: none;
+        border-bottom: 5px solid var(--main-hover);
+        border-right: 3px solid var(--main-hover);
+    }
+    .store-btn span {
+        font-weight: 700;
+        font-size: 1rem;
+    }
+    .store-btn i {
+        font-size: 12px;
+        margin-left: 8px;
+        transition: 0.5s;
     }
 
-    .store-btn:hover {
-        background: var(--main-hover);
+    .store-btn:hover i {
+        transform: translateX(7px);
+        transition: 0.3s;
     }
 </style>
 
@@ -84,6 +95,9 @@ const products = [
         </div>
 
         <!-- GO TO STORE BUTTON -->
-        <a href="/products" class="store-btn">Go to Store</a>
+        <a href="/products" class="store-btn"
+            ><span>Go to Store</span>
+            <i class="fa-solid fa-arrow-right-long"></i>{" "}</a
+        >
     </div>
 </Section>
