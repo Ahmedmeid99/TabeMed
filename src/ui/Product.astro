@@ -1,9 +1,12 @@
 ---
-const { title, desc, price, image } = Astro.props;
+const { title, desc, price, image, slug } = Astro.props;
 ---
 
 <style>
     /* Card style */
+    a {
+        text-decoration: none;
+    }
     .product-card {
         background: var(--white);
         padding: 1.2rem;
@@ -51,9 +54,11 @@ const { title, desc, price, image } = Astro.props;
     }
 </style>
 
-<div class="product-card">
-    <img src={image} class="product-image" alt={title} loading="lazy" />
-    <div class="product-title">{title}</div>
-    <div class="product-desc">{desc}</div>
-    <div class="product-price">{price}</div>
-</div>
+<a href={`/${slug}`}>
+    <div class="product-card">
+        <img src={image} class="product-image" alt={title} loading="lazy" />
+        <div class="product-title">{title}</div>
+        <div class="product-desc">{desc}</div>
+        <div class="product-price">{price}</div>
+    </div>
+</a>

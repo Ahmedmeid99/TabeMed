@@ -3,87 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../ui/Section.astro";
 import "../styles/global.css";
 import Product from "../ui/Product.astro";
-
-const products = [
-    {
-        title: "Neteret Skin",
-        image: "/images/products/01.jpg",
-        desc: "Premium silicone cosmetic cover designed to match natural skin tone and provide a smooth, realistic finish for prosthetic limbs.",
-        price: "$180",
-    },
-    {
-        title: "Geb Foot",
-        image: "/images/products/02.jpg",
-        desc: "High-performance prosthetic foot engineered for daily mobility, shock absorption, and natural walking dynamics.",
-        price: "$650",
-    },
-    {
-        title: "Djed Pylon",
-        image: "/images/products/03.jpg",
-        desc: "Lightweight and durable pylon system offering excellent stability and alignment for lower-limb prostheses.",
-        price: "$120",
-    },
-    {
-        title: "Osiris Skin",
-        image: "/images/products/04.jpg",
-        desc: "Advanced silicone skin cover with enhanced durability and lifelike texture for an elegant, natural look.",
-        price: "$210",
-    },
-    {
-        title: "RA Knee",
-        image: "/images/products/05.jpg",
-        desc: "A reliable mechanical prosthetic knee joint designed for smooth motion, stability, and long-term comfort.",
-        price: "$980",
-    },
-    {
-        title: "Ka Carbon Foot",
-        image: "/images/products/06.jpg",
-        desc: "Carbon-fiber prosthetic foot offering high energy return, lightweight structure, and excellent performance for active users.",
-        price: "$820",
-    },
-    {
-        title: "Khepri Insole",
-        image: "/images/products/07.jpg",
-        desc: "Custom-comfort orthotic insole providing foot alignment, shock absorption, and enhanced walking comfort.",
-        price: "$60",
-    },
-    {
-        title: "Hamis Skin",
-        image: "/images/products/08.jpg",
-        desc: "Soft silicone cosmetic skin that blends naturally with different tones and provides a realistic finish for prosthetic limbs.",
-        price: "$170",
-    },
-    {
-        title: "Neteret Skin",
-        image: "/images/products/09.jpg",
-        desc: "Durable prosthetic skin sleeve designed to protect the limb and enhance cosmetic appearance.",
-        price: "$140",
-    },
-    {
-        title: "Hathor Skin",
-        image: "/images/products/10.jpg",
-        desc: "Ultra-realistic silicone skin cover featuring refined texture and natural coloration for a lifelike prosthetic appearance.",
-        price: "$195",
-    },
-    {
-        title: "Nefertari Skin",
-        image: "/images/products/12.jpg",
-        desc: "Premium handcrafted silicone skin designed for a refined and natural look on cosmetic prosthetic limbs.",
-        price: "$230",
-    },
-    {
-        title: "Djed Pylon",
-        image: "/images/products/13.jpg",
-        desc: "Strong and lightweight modular pylon offering excellent alignment control and long-lasting structural performance.",
-        price: "$130",
-    },
-    {
-        title: "RA Knee",
-        image: "/images/products/14.jpg",
-        desc: "Durable prosthetic knee joint providing stable motion, controlled swing, and enhanced confidence with every step.",
-        price: "$920",
-    },
-];
+import { products } from "../data/products";
 ---
 
 <style>
@@ -139,6 +59,7 @@ const products = [
                             desc={p.desc}
                             price={p.price}
                             image={p.image}
+                            slug={p.slug}
                         />
                     ))
                 }

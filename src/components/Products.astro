@@ -1,28 +1,9 @@
 ---
+import { products } from "../data/products";
 import Product from "../ui/Product.astro";
 import Section from "../ui/Section.astro";
 
-/* PRODUCT DATA – Using your images 01, 02, 03 */
-const products = [
-    {
-        title: "Geb Foot",
-        image: "/images/products/02.jpg",
-        desc: "High-performance prosthetic foot engineered for daily mobility, shock absorption, and natural walking dynamics.",
-        price: "$650",
-    },
-    {
-        title: "Ka Carbon Foot",
-        image: "/images/products/06.jpg",
-        desc: "Carbon-fiber prosthetic foot offering high energy return, lightweight structure, and excellent performance for active users.",
-        price: "$820",
-    },
-    {
-        title: "Djed Pylon",
-        image: "/images/products/13.jpg",
-        desc: "Strong and lightweight modular pylon offering excellent alignment control and long-lasting structural performance.",
-        price: "$130",
-    },
-];
+const someProducts = products.slice(0, 3);
 ---
 
 <style>
@@ -83,12 +64,13 @@ const products = [
         <!-- Product Cards -->
         <div class="products-grid">
             {
-                products.map((p) => (
+                someProducts.map((p) => (
                     <Product
                         title={p.title}
                         desc={p.desc}
                         price={p.price}
                         image={p.image}
+                        slug={p.slug}
                     />
                 ))
             }
