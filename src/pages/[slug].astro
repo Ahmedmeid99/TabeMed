@@ -108,11 +108,23 @@ const { product } = Astro.props;
                 font-weight: 700;
                 text-decoration: none;
                 transition: 0.2s;
+                border-bottom: 5px solid var(--main-hover);
+                border-right: 3px solid var(--main-hover);
             }
 
-            .btn-buy:hover {
-                background: var(--main-hover);
-                transform: translateY(-3px);
+            .btn-buy span {
+                font-weight: 700;
+                font-size: 1rem;
+            }
+            .btn-buy i {
+                font-size: 12px;
+                margin-left: 8px;
+                transition: 0.5s;
+            }
+
+            .btn-buy:hover i {
+                transform: translateX(7px);
+                transition: 0.3s;
             }
 
             @media (max-width: 900px) {
@@ -155,7 +167,10 @@ const { product } = Astro.props;
 
                 <div class="product-price">{product.price}</div>
 
-                <a href="/contactus" class="btn-buy">Contact to Order</a>
+                <a href="/contactus" class="btn-buy"
+                    ><span>Contact to Order</span>
+                    <i class="fa-solid fa-arrow-right-long"></i></a
+                >
             </div>
         </div>
     </Section>
