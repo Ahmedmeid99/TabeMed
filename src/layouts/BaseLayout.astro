@@ -13,36 +13,67 @@ const { title } = Astro.props;
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <title>{title} — Tabemed</title>
-        <link
-            rel="shortcut icon"
-            href="images/favicon.ico"
-            type="image/x-icon"
+
+        <!-- Favicon -->
+        <link rel="icon" href="/images/favicon.ico" type="image/png" />
+
+        <!-- ===================== SEO DESCRIPTION ====================== -->
+        <meta
+            name="description"
+            content="Tabemed provides advanced prosthetics, orthotics, and mobility care based on Egyptian medical heritage. Precision fittings, gait analysis, comfort-focused devices, and follow-up support for amputees and movement-challenged individuals."
         />
-        <!-- google fonts -->
+
+        <!-- ===================== SEO KEYWORDS ====================== -->
+        <meta
+            name="keywords"
+            content="
+            prosthetics,
+            orthotics,
+            mobility devices,
+            artificial limbs,
+            gait analysis,
+            rehabilitation,
+            medical engineering,
+            prosthetic clinic Egypt,
+            orthotic clinic Cairo,
+            assistive technology,
+            mobility support,
+            الأطراف الصناعية,
+            الجبائر الطبية,
+            أجهزة الحركة,
+            تحليل المشي,
+            مركز الأطراف الصناعية,
+            مركز الجبائر,
+            تأهيل حركي,
+            أبحاث الحركة,
+            رعاية الأطراف
+        "
+        />
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://tabemed.com/" />
+
+        <!-- ===================== OpenGraph (Social Sharing) ====================== -->
+        <meta property="og:title" content={`${title} — Tabemed`} />
+        <meta
+            property="og:description"
+            content="Advanced prosthetic & orthotic solutions engineered for comfort, stability, and human dignity. Inspired by Egyptian medical heritage."
+        />
+        <meta property="og:image" content="/images/favicon.ico" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Tabemed" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="ar_AR" />
+
+        <!-- ===================== Google Fonts ====================== -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap"
             rel="stylesheet"
         />
-
-        <meta
-            name="description"
-            content="Tabemed provides professional medical services, doctors appointments, diagnostics, and healthcare solutions with modern and trusted technology."
-        />
-        <meta
-            name="keywords"
-            content="medical, healthcare, clinic, doctors, hospital, diagnostics, medical services"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://your-domain.com/" />
-
-        <!-- Bootstrap CSS -->
-        <!-- <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-        /> -->
     </head>
 
     <body>
