@@ -8,13 +8,14 @@ const { iconClass } = Astro.props;
         box-shadow: 0 0px 12px rgba(0, 0, 0, 0.08);
         padding: 2rem 1.5rem;
         text-align: center;
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease,
-            opacity 1s ease;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeUp 0.8s ease forwards;
+        transition: 0.3s ease;
+        /* opacity: 0; */
+        /* transform: translateY(30px); */
+        /* animation: fadeUp 0.8s ease forwards; */
+        border: 1px solid var(--main);
+    }
+    .card:hover {
+        transform: scale(0.98);
     }
     @keyframes fadeUp {
         to {
@@ -23,7 +24,7 @@ const { iconClass } = Astro.props;
         }
     }
 
-    .card:nth-child(1) {
+    /* .card:nth-child(1) {
         animation-delay: 0.1s;
     }
     .card:nth-child(2) {
@@ -31,7 +32,7 @@ const { iconClass } = Astro.props;
     }
     .card:nth-child(3) {
         animation-delay: 0.5s;
-    }
+    } */
 
     .card h3 {
         font-size: 1.5rem;
@@ -64,6 +65,7 @@ const { iconClass } = Astro.props;
             color 0.3s ease,
             transform 0.3s ease;
         position: relative;
+        z-index: 2;
     }
     .icon i::after {
         content: "";
